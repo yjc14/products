@@ -7,9 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
-        }
+        body { font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif; }
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -19,14 +17,11 @@
             width: 3px;
             background: #e5e7eb;
         }
-        .timeline-item:last-child::before {
-            display: none;
-        }
+        .timeline-item:last-child::before { display: none; }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
     <div class="max-w-md mx-auto bg-white min-h-screen shadow-xl overflow-hidden">
-        <!-- 头部 -->
         <header class="bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 px-6">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-white/20 rounded-2xl flex items-center justify-center">
@@ -39,7 +34,7 @@
             </div>
         </header>
 
-        <div id="loading" class="p-8 text-center hidden">
+        <div id="loading" class="p-8 text-center">
             <i class="fa-solid fa-spinner fa-spin text-4xl text-green-600 mb-4"></i>
             <p class="text-gray-600">正在查询溯源信息...</p>
         </div>
@@ -49,19 +44,15 @@
             <h3 class="text-xl font-semibold text-gray-800 mb-2">未找到产品信息</h3>
             <p class="text-gray-600 mb-6">请检查二维码是否正确或联系客服</p>
             <button onclick="window.location.reload()" 
-                    class="px-6 py-3 bg-green-600 text-white rounded-2xl font-medium hover:bg-green-700 transition">
+                    class="px-6 py-3 bg-green-600 text-white rounded-2xl font-medium hover:bg-green-700">
                 重新扫描
             </button>
         </div>
 
-        <!-- 产品详情 -->
         <div id="product-detail" class="hidden">
-            <!-- 产品基本信息 -->
             <div class="p-6 border-b">
                 <div class="flex gap-5">
-                    <div id="product-image" 
-                         class="w-28 h-28 bg-gray-100 rounded-3xl flex-shrink-0 flex items-center justify-center text-5xl shadow-inner">
-                    </div>
+                    <div id="product-image" class="w-28 h-28 bg-gray-100 rounded-3xl flex items-center justify-center text-6xl shadow-inner"></div>
                     <div class="flex-1 pt-2">
                         <div id="product-name" class="text-2xl font-bold text-gray-900"></div>
                         <div id="product-number" class="text-green-600 font-mono mt-1"></div>
@@ -73,13 +64,10 @@
                 </div>
             </div>
 
-            <!-- 溯源信息卡片 -->
             <div class="p-6 space-y-6">
-                <!-- 基础信息 -->
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-info-circle text-emerald-600"></i>
-                        产品信息
+                        <i class="fa-solid fa-info-circle text-emerald-600"></i>产品信息
                     </h3>
                     <div class="grid grid-cols-2 gap-4 text-sm">
                         <div class="bg-gray-50 rounded-2xl p-4">
@@ -93,38 +81,29 @@
                     </div>
                 </div>
 
-                <!-- 检测结果 -->
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-emerald-600"></i>
-                        检测结果
+                        <i class="fa-solid fa-shield-halved text-emerald-600"></i>检测结果
                     </h3>
-                    <div id="test-results" class="bg-emerald-50 border border-emerald-200 rounded-3xl p-5 text-sm space-y-3">
-                    </div>
+                    <div id="test-results" class="bg-emerald-50 border border-emerald-200 rounded-3xl p-5 text-sm space-y-3"></div>
                 </div>
 
-                <!-- 物流时间轴 -->
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-truck text-emerald-600"></i>
-                        物流溯源
+                        <i class="fa-solid fa-truck text-emerald-600"></i>物流溯源
                     </h3>
-                    <div id="logistics-timeline" class="relative pl-8 space-y-8">
-                        <!-- JS 动态填充 -->
-                    </div>
+                    <div id="logistics-timeline" class="relative pl-8 space-y-8"></div>
                 </div>
 
-                <!-- 溯源结论 -->
                 <div class="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-200 rounded-3xl p-6 text-center">
                     <div class="flex justify-center mb-3">
                         <div class="w-16 h-16 bg-white rounded-2xl shadow flex items-center justify-center text-4xl">✅</div>
                     </div>
-                    <h4 id="conclusion-title" class="font-bold text-xl text-emerald-800">正品保障</h4>
+                    <h4 id="conclusion-title" class="font-bold text-xl text-emerald-800"></h4>
                     <p id="conclusion-text" class="text-emerald-700 mt-2 text-sm leading-relaxed"></p>
                 </div>
             </div>
 
-            <!-- 底部信息 -->
             <div class="bg-gray-100 py-6 px-6 text-center text-xs text-gray-500 border-t">
                 <p>数据由区块链技术保障 • 防篡改</p>
                 <p class="mt-1">查询时间：<span id="query-time"></span></p>
@@ -146,7 +125,9 @@
 
             try {
                 const response = await fetch('products.json');
-                const products = await response.json();
+                if (!response.ok) throw new Error('JSON文件加载失败');
+                const data = await response.json();
+                const products = data.products || data;
                 
                 const product = products.find(p => p.id === id);
                 
@@ -166,68 +147,45 @@
             document.getElementById('loading').classList.add('hidden');
             document.getElementById('product-detail').classList.remove('hidden');
 
-            // 基础信息
             document.getElementById('product-name').textContent = product.name;
             document.getElementById('product-number').textContent = `产品编号：${product.productNumber}`;
             document.getElementById('batch').textContent = `批次：${product.batch}`;
             document.getElementById('origin').textContent = product.origin;
             document.getElementById('production-date').textContent = product.productionDate;
 
-            // 图片（使用emoji作为占位）
-            const imgContainer = document.getElementById('product-image');
-            imgContainer.innerHTML = `<span class="text-6xl">${product.emoji || '🍎'}</span>`;
+            document.getElementById('product-image').innerHTML = `<span>${product.emoji || '🍎'}</span>`;
 
-            // 检测结果
             const testContainer = document.getElementById('test-results');
             testContainer.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <span class="text-emerald-700">重金属残留</span>
-                    <span class="font-medium text-emerald-700">${product.testResults.heavyMetal}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="text-emerald-700">农药残留</span>
-                    <span class="font-medium text-emerald-700">${product.testResults.pesticide}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="text-emerald-700">微生物检测</span>
-                    <span class="font-medium text-emerald-700">${product.testResults.microbe}</span>
-                </div>
+                <div class="flex justify-between"><span>重金属残留</span><span class="font-medium text-emerald-700">${product.testResults.heavyMetal}</span></div>
+                <div class="flex justify-between"><span>农药残留</span><span class="font-medium text-emerald-700">${product.testResults.pesticide}</span></div>
+                <div class="flex justify-between"><span>微生物检测</span><span class="font-medium text-emerald-700">${product.testResults.microbe}</span></div>
             `;
 
-            // 物流时间轴
-            const timelineContainer = document.getElementById('logistics-timeline');
-            timelineContainer.innerHTML = product.logistics.map((item, index) => `
+            const timeline = document.getElementById('logistics-timeline');
+            timeline.innerHTML = product.logistics.map(item => `
                 <div class="timeline-item relative">
-                    <div class="absolute left-0 w-6 h-6 rounded-full border-4 border-white bg-emerald-600 flex items-center justify-center shadow">
+                    <div class="absolute -left-1 w-6 h-6 rounded-full bg-emerald-600 flex items-center justify-center">
                         <i class="fa-solid ${item.icon} text-white text-xs"></i>
                     </div>
-                    <div class="ml-2">
+                    <div class="ml-6">
                         <div class="font-medium">${item.time}</div>
                         <div class="text-sm text-gray-600">${item.status}</div>
-                        <div class="text-xs text-gray-500 mt-0.5">${item.location}</div>
+                        <div class="text-xs text-gray-500">${item.location}</div>
                     </div>
                 </div>
             `).join('');
 
-            // 结论
             document.getElementById('conclusion-title').textContent = product.conclusion.title;
             document.getElementById('conclusion-text').textContent = product.conclusion.text;
-
-            // 查询时间
-            const now = new Date();
-            document.getElementById('query-time').textContent = now.toLocaleString('zh-CN');
+            document.getElementById('query-time').textContent = new Date().toLocaleString('zh-CN');
         }
 
-        function showError(msg = "未找到该产品信息") {
+        function showError(msg = "未找到产品信息") {
             document.getElementById('loading').classList.add('hidden');
-            const errorEl = document.getElementById('error');
-            errorEl.classList.remove('hidden');
-            if (msg) {
-                errorEl.querySelector('h3').textContent = msg;
-            }
+            document.getElementById('error').classList.remove('hidden');
         }
 
-        // 页面加载完成执行
         window.onload = loadProduct;
     </script>
 </body>
