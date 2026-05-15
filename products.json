@@ -1,0 +1,92 @@
+{
+  "products": [
+    {
+      "id": "001",
+      "name": "有机富士苹果",
+      "emoji": "🍎",
+      "productNumber": "AP-20250508-001",
+      "batch": "20250508A",
+      "origin": "陕西省延安市宝塔区",
+      "productionDate": "2025-05-08",
+      "testResults": {
+        "heavyMetal": "未检出",
+        "pesticide": "合格",
+        "microbe": "合格"
+      },
+      "logistics": [
+        {
+          "time": "2025-05-09 08:30",
+          "status": "采摘入库",
+          "location": "延安苹果基地",
+          "icon": "fa-apple-whole"
+        },
+        {
+          "time": "2025-05-10 14:20",
+          "status": "包装出库",
+          "location": "延安苹果基地",
+          "icon": "fa-box"
+        },
+        {
+          "time": "2025-05-12 09:15",
+          "status": "抵达配送中心",
+          "location": "西安物流中心",
+          "icon": "fa-truck"
+        },
+        {
+          "time": "2025-05-14 11:45",
+          "status": "已送达门店",
+          "location": "北京物美超市",
+          "icon": "fa-store"
+        }
+      ],
+      "conclusion": {
+        "title": "正品保障",
+        "text": "该产品全程可溯源，检测结果全部合格，属于绿色有机食品，请放心食用。"
+      }
+    },
+    {
+      "id": "002",
+      "name": "东北大米",
+      "emoji": "🌾",
+      "productNumber": "RI-20250415-008",
+      "batch": "20250415B",
+      "origin": "黑龙江省五常市",
+      "productionDate": "2025-04-15",
+      "testResults": {
+        "heavyMetal": "未检出",
+        "pesticide": "合格",
+        "microbe": "合格"
+      },
+      "logistics": [
+        {
+          "time": "2025-04-16 10:00",
+          "status": "收割入库",
+          "location": "五常稻米基地",
+          "icon": "fa-wheat-awn"
+        },
+        {
+          "time": "2025-04-18 15:30",
+          "status": "加工包装",
+          "location": "五常加工厂",
+          "icon": "fa-industry"
+        },
+        {
+          "time": "2025-04-20 08:45",
+          "status": "发往全国",
+          "location": "哈尔滨物流枢纽",
+          "icon": "fa-truck"
+        },
+        {
+          "time": "2025-05-13 18:20",
+          "status": "已送达门店",
+          "location": "上海沃尔玛",
+          "icon": "fa-store"
+        }
+      ],
+      "conclusion": {
+        "title": "正品保障",
+        "text": "该批次大米来自五常核心产区，全程冷链运输，品质优良，欢迎品鉴。"
+      }
+    }
+  ]
+}
